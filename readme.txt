@@ -3,7 +3,7 @@
  * Description        : Readme file
  * Date               : July-28-2017
  ******************************************************************************
- *
+ * 
  * Copyright (c) 2017 Waveshare
  * All rights reserved.
  *
