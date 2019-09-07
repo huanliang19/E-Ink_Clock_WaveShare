@@ -2,6 +2,9 @@ from PIL import Image, ImageDraw, ImageFont
 import datetime
 
 x = datetime.datetime.now()
+filename = 'facts.txt'
+f = open(filename, 'r')
+
 class block:
     canvas = Image.new('1',(0, 0),255)
     font = ImageFont.load_default()
@@ -22,6 +25,7 @@ class block:
 
     def generate(self):
         w,h = self.font.getsize(self.text)
+        self.draw.rectangle((0, 0, self.width, self.height), fill='white')
         self.draw.text((((self.width)-w)/2, (self.height-h)/2), self.text, font = self.font, fill = 0)
         return self.canvas
 
@@ -75,10 +79,26 @@ class factBlock(block):
         return text_lines
 
     def update(self):
-        text = "What is a Pale Ale?\nPale ale is a beer made by warm fermentation using predominantly pale malt. The higher proportion of pale malts results in a lighter colour. The term 'pale ale' first appeared around 1703 for beers made from malts dried with coke, which resulted in a lighter colour than other beers popular at that time."
+        # text = somefunction() that recturns the correct string, newlines included
+        # text = flr.newfact()
+        text = self.newfact()
         tmp = self.wrap_text(text, width=400, font=self.font)
         self.text = "\n".join(tmp)
 
     def generate(self):
+        self.draw.rectangle((0, 0, self.width, self.height), fill='white')
         self.draw.text((0, 0), self.text, font = self.font, fill = 0)
         return self.canvas
+
+    def newfact(self):
+        f_contents = ''
+        for x in range(9):
+            if x%3 != 0:
+                f_contents = f_contents + f.readline()
+            else:
+                f.readline()
+                f_contents = f_contents + '\n'
+        return f_contents
+
+    def closefile(self):
+        f.close()

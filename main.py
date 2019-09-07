@@ -50,6 +50,25 @@ try:
 
     # epd.display(epd.getbuffer(Himage))
     Himage.show()
+
+    timeBlk.update()
+    dateBlk.update()
+    dayBlk.update()
+    factBlk.update()
+
+    timeImg = timeBlk.generate()
+    dayImg = dateBlk.generate()
+    dateImg = dayBlk.generate()
+    factImg = factBlk.generate()
+
+    Himage.paste(timeImg, timeLoc)
+    Himage.paste(dayImg, dateLoc)
+    Himage.paste(dateImg, dayLoc)
+    Himage.paste(factImg, factLoc)
+
+    # epd.display(epd.getbuffer(Himage))
+    Himage.show()
+    factBlk.closefile()
     time.sleep(2)
 
 
