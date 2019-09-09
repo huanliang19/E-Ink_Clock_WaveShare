@@ -7,6 +7,8 @@ import time
 from PIL import Image,ImageDraw,ImageFont
 import traceback
 
+font = 'C:\Windows\Fonts\BRADHITC.ttf'
+
 timeLoc = (0,0)
 dateLoc = (200,0)
 dayLoc = (200,40)
@@ -28,28 +30,10 @@ try:
     dayBlk = blk.dayBlock(200,40)
     factBlk = blk.factBlock(400,220)
 
-    timeBlk.setFont(ImageFont.truetype('C:\Windows\Fonts\BRADHITC.ttf', 45))
-    dateBlk.setFont(ImageFont.truetype('C:\Windows\Fonts\BRADHITC.ttf', 33))
-    dayBlk.setFont(ImageFont.truetype('C:\Windows\Fonts\BRADHITC.ttf', 33))
-    factBlk.setFont(ImageFont.truetype('C:\Windows\Fonts\BRADHITC.ttf', 20))
-
-    timeBlk.update()
-    dateBlk.update()
-    dayBlk.update()
-    factBlk.update()
-
-    timeImg = timeBlk.generate()
-    dayImg = dateBlk.generate()
-    dateImg = dayBlk.generate()
-    factImg = factBlk.generate()
-
-    Himage.paste(timeImg, timeLoc)
-    Himage.paste(dayImg, dateLoc)
-    Himage.paste(dateImg, dayLoc)
-    Himage.paste(factImg, factLoc)
-
-    # epd.display(epd.getbuffer(Himage))
-    Himage.show()
+    timeBlk.setFont(ImageFont.truetype(font, 45))
+    dateBlk.setFont(ImageFont.truetype(font, 33))
+    dayBlk.setFont(ImageFont.truetype(font, 33))
+    factBlk.setFont(ImageFont.truetype(font, 20))
 
     timeBlk.update()
     dateBlk.update()

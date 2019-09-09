@@ -1,4 +1,5 @@
 from PIL import Image, ImageDraw, ImageFont
+from random import *
 import datetime
 
 x = datetime.datetime.now()
@@ -91,13 +92,23 @@ class factBlock(block):
         return self.canvas
 
     def newfact(self):
+        rand = randint(1, 914)*3
+        rand2 = randint(1, 914)*3
         f_contents = ''
-        for x in range(9):
-            if x%3 != 0:
-                f_contents = f_contents + f.readline()
-            else:
-                f.readline()
-                f_contents = f_contents + '\n'
+
+        for x, line in enumerate(f):
+            if x==rand+1:
+                f_contents = f_contents + line
+            if x==rand+2:
+                f_contents = f_contents + "---" + line
+            if x==rand+4:
+                f_contents = f_contents + line
+            if x==rand+5:
+                f_contents = f_contents + "---" + line
+            if x==rand+7:
+                f_contents = f_contents + line
+            if x==rand+8:
+                f_contents = f_contents + "---" + line
         return f_contents
 
     def closefile(self):
